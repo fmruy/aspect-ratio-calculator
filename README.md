@@ -1,3 +1,3 @@
 # Aspect Ratio Calculator
 
-Aspect ratio calculator simple app to auto calculate proportions based on image pixel.
+Aspect ratio calculator app that allows user to automatically calculate the aspect ratio proportions based on given width and height.
