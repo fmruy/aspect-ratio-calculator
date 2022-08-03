@@ -3,229 +3,66 @@
 
 {% block content %}
 
-<!-- Main Title -->
-<section>
-    <div class="container main-header px-3 px-lg-5 pt-3 pb-4">
-        <div class="d-flex align-items-center">
-            <h1>Aspect Ratio Calculator</h1>
-        </div>
-    </div>
-</section>
-
-<!-- Content  -->
-<section>
-    <div class="container px-3 px-lg-5">
-        <!-- TODO -->
-        Insert your sizes and get the ratio.
-        <hr />
-        
-        <div class="py-2">
-            Width: <input min="0" max="10000" type="number" class="inputValue" id="input-width" placeholder="100"> px
-            <br><br>
-            Height: <input min="0" max="10000" type="number" class="inputValue" id="input-height" placeholder="100"> px
-        </div>
-        <div id="error-tag"></div>
-        <br>
-
-        <div class="py-2">
-            <div id="ratio-tag">Ratio: ?</div>
-        </div>
-        <hr />
-
-        <!-- TODO -->
-    </div>
-</section>
-
-
-
-
-
-
-<!-- Page Content Block 1 - Upload -->
+<!-- Page Content Block 1 -->
 
 <!-- Message box -->
-<div id="live-alert-placeholder">
+<div id="live-alert-placeholder"></div>
+<div id="error-tag"></div>
 
-</div>
-
-<div class="upload-container row h-100">
-    <div class="col-sm p-0 mb-3">
-        <div class="row h-100 m-2">
-            <div id="upload-box" class="upload-box animate d-flex flex-row align-items-center border-intense">
-                <div class="filepond-container">
-                    <!-- Data -->
-                    
-
-
-                </div>
-            </div>
+<!-- Aspect Ratio Calculator -->
+<div class="row">
+    <div class="upload-box animate col-sm m-2 py-3 px-4">
+        <h3>Custom Size Ratio Calculator</h3>
+        <hr />
+        <div class="py-2">
+            Common Presets: --
         </div>
+        <div class="py-2">
+            Ratio Width:
+            <input min="0" max="10000" type="number" class="inputValue" id="input-width" placeholder="100">
+            px / cm / inch
+        </div>
+        <div class="py-2">
+            Ratio Height:
+            <input min="0" max="10000" type="number" class="inputValue" id="input-height" placeholder="100"> px / cm /
+            inch
+        </div>
+
     </div>
-    <div id="resizeOptionsContainer" class="col-sm p-0 mb-3" style="display: none;">
-        <div class="options-box animate h-100 m-2 p-4">
-            <!-- Resize options -->
-            <div class="mb-3">
-                <h4 class="pb-1">Resize options:</h4>
+    <div class="options-box animate col-sm m-2 py-3 px-4">
+        <h3>Aspect Ratio Result</h3>
+        <hr />
 
-                <!-- Resize options: Mode selector -->
-                <div id="resizeMethod" class="row text-center">
-                    <div class="col-12 col-md-4 my-1">
-                        <button id="btn-mode-standard" class="btn btn-resize-mode btn-resize-mode-sel" type="button"><i
-                                class="bi bi-badge-sd bi-mr"></i>Standard size</button>
-                        <i id="btn-mode-standard-ar" class="bi bi-chevron-down arr-resize-mode arr-resize-mode-sel"></i>
-                    </div>
-                    <div class="col-12 col-md-4 my-1">
-                        <button id="btn-mode-custom" class="btn btn-resize-mode" type="button"><i
-                                class="bi bi-aspect-ratio bi-mr"></i>Custom size</button>
-                        <i id="btn-mode-custom-ar" class="bi bi-chevron-down arr-resize-mode"></i>
-                    </div>
-                    <div class="col-12 col-md-4 my-1">
-                        <button id="btn-mode-percentage" class="btn btn-resize-mode" type="button"><i
-                                class="bi bi-percent bi-mr"></i>Percentage</button>
-                        <i id="btn-mode-percentage-ar" class="bi bi-chevron-down arr-resize-mode"></i>
-                    </div>
-                </div>
-                <!-- Resize options: Options Blocks -->
-                <div id="options-box-mode">
-                    <hr />
-                    <p><span class="span-options">Crop Mode: </span><input id="cropModeCheckbox" type="checkbox"
-                            checked>
-                        <span class="span-options">crop</span>
-                        <input id="containModeCheckbox" type="checkbox"> <span class="span-options">contain</span>
-                        ( background color
-                        <input type="color" id="backColorPicker" name="backColorPicker" value="#f5f5f5"> )
-                    </p>
-
-                    <hr />
-                </div>
-                <div id="options-box-preset">
-
-                    <div id="presetListContainer">
-                        <span class="span-options">Scale to a standard size </span>
-                    </div>
-
-                    <hr />
-                </div>
-                <div id="options-box-custom-size">
-                    <div id="sizeContainer">
-                        <div class="py-2">
-
-                            Width: <input min="0" max="2500" type="number" class="inputValue" id="width"
-                                placeholder="auto">
-                            px
-
-                            -
-
-                            Height: <input min="0" max="2500" type="number" class="inputValue" id="height"
-                                placeholder="auto">
-                            px
-
-                        </div>
-                        <div class="py-2">
-                            <input id="autoForceWidthHeightCheckbox" type="checkbox"> Force to custom width and
-                            height
-                        </div>
-                    </div>
-                    <hr />
-                </div>
-                <div id="options-box-percentage">
-                    <hr />
-                    <div id="sliderContainer">
-                        <div class="py-2">
-                            Select a percentage
-                        </div>
-                        <div class="py-2">
-                            <!-- review style 
-                                https://codepen.io/vsync/pen/mdEJMLv
-                                -->
-                            <input type="range" min="5" max="95" value="50" class="scale-slider" id="range">
-                        </div>
-                    </div>
-                    <hr />
+        <div class="row">
+            <div class="col-6-sm">
+                <div class="proportion-diagram">
+                    <span>w</span>
+                    <span>h</span>
                 </div>
             </div>
+            <div class="col-sm">
+                <h6>Your image size</h6>
+                <h5 id="image-size-tag">0000x0000px</h5>
 
-            <div id="updateModeContainer">
-                Update mode:
-                <input id="updateCheckbox" type="checkbox"> auto-update
-                <button id="updateButton" class="btn btn-update">Update</button>
+                <h6>Aspect Ratio</h6>
+                <h5 id="aspect-ratio-tag">0:0</h5>
+            </div>
+            <div class="col-sm">
+                <h6>Fraction</h6>
+                <h6 id="fraction-tag">0.000</h6>
+
+                <h6>Mode</h6>
+                <h6 id="mode-tag">-</h6>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Example images -->
-<div id="exampleImageContainer" class="text-center mt-4" style="display: none;">
-    <p class="h4">Or select a image to try:</p>
-    <div id="example-images" class="mt-3">
-        <!-- PREV EXAMPLE -->
-    </div>
-</div>
-
-<!-- Show images -->
-<div id="showContainer" class="show-container row" style="display: none;">
-    <div class="col p-0">
-        <div class="show-box m-2 p-4">
-
-            <h4 id="show-title" class="pb-1">Your resize image:</h4>
-            <p id="show-description" class="mb-4">All auto resized and croped to a standard size of 16:9
-                Widescreen.
-            </p>
-
-            <!-- Show single image -->
-            <div id="show-single">
-                <!--
-                    <div class="col-sm-8">
-                        <div class="show-single-image">
-                            <p class="placeholder-glow"><span class="placeholder col-12" style="height:50vh;"></span>
-                            <div class="show-size-tag">10000x10000</div>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <p id="show-single-description">Resized image No. 1 (JPG)</p>
-                        <button type="button" id="show-single-download" class="btn btn-download"><i
-                                class="bi bi-download bi-mr"></i>Download</button>
-                    </div>
-                    -->
-            </div>
-            <!-- Show multiple image -->
-            <div id="show-multiple" class="row">
-                <!--
-                    <div class="col-sm-3 my-4">
-                        <div class="show-multiple-image">
-                            <p class="placeholder-glow"><span class="placeholder col-12" style="height:20vh;"></span>
-                            </p>
-                            <div class="show-size-tag">500x500</div>
-                        </div>
-                        <p id="show-single-description">Resized image No. 1 (JPG)</p>
-                        <button type="button" id="show-single-download" class="btn btn-download"><i
-                                class="bi bi-download bi-mr"></i>Download</button>
-                    </div>
-                    -->
-            </div>
-
-
-            <!-- Hidden images for system -->
-            <div id="imagesPreviewContainer">
-                <div id="imageResizedContainer">
-                    <h5>Resized image</h5>
-                </div>
-                <div id="imagePrevContainer">
-                    <h5>Prev image</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="spacer"></div>
 
 <!-- Page Content Block 2 -->
-<!-- Content Row with cards -->
+<div class="spacer"></div>
 <div class="row gx-lg-5">
     <h2 class="my-4">How to use an Aspect Ratio Calculator</h2>
-    <ol>
+    <ol class="mx-4">
         <li>
             Insert the first value (width or height).
         </li>
@@ -238,28 +75,32 @@
     </ol>
 </div>
 <div class="spacer"></div>
-<!-- Text Description -->
+
 <div class="row mb-5">
     <h2 class="pb-4 slide-top-1">About Aspect Ratio</h2>
     <div class="col-sm slide-top-2">
-        <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed as two numbers separated by a colon (x:y). 
+        <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed as
+            two numbers separated by a colon (x:y).
         </p>
         <p>
-            For example, images with the aspect ratio of 4:3 will always have a width of 4 units and a height of 9 units of the same length. This is easy to understand when the numbers are simple: an image of 1600x900 pixels has an aspect ratio of 16:9, or an image of 3000x1500 has an aspect ratio of 2:1. 
+            For example, images with the aspect ratio of 4:3 will always have a width of 4 units and a height of 9 units
+            of the same length. This is easy to understand when the numbers are simple: an image of 1600x900 pixels has
+            an aspect ratio of 16:9, or an image of 3000x1500 has an aspect ratio of 2:1.
         </p>
 
     </div>
     <div class="col-sm slide-top-2">
-        <p>But it is more complicated when the numbers do not round to anything known, for example with Social Media sizes used by Facebook, Instagram, or Twitter, an image of 1200x628px need to have an aspect ratio of 1.91:1.
+        <p>But it is more complicated when the numbers do not round to anything known, for example with Social Media
+            sizes used by Facebook, Instagram, or Twitter, an image of 1200x628px need to have an aspect ratio of
+            1.91:1.
 
         </p>
         <p>
-            To achieve results, we use a complicated formula that round in special cases to give a human-understandable fraction. For example, when the left unit of the formula results in 8 units and the right unit results in 5 units, instead of using the mathematical value of 8:5 is standard to convert it to 16:10.
+            To achieve results, we use a complicated formula that round in special cases to give a human-understandable
+            fraction. For example, when the left unit of the formula results in 8 units and the right unit results in 5
+            units, instead of using the mathematical value of 8:5 is standard to convert it to 16:10.
         </p>
     </div>
-
-
 </div>
-
 
 {% endblock %}

@@ -4,12 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Elements
     const inputWidth = document.getElementById("input-width");
     const inputHeight = document.getElementById("input-height");
-    const ratioTag = document.getElementById("ratio-tag");
     const errorTag = document.getElementById("error-tag");
+    const imageSizeTag = document.getElementById("image-size-tag");
+    const aspectRatioTag = document.getElementById("aspect-ratio-tag");
+    const fractionTag = document.getElementById("fraction-tag");
+    const modeTag = document.getElementById("mode-tag");
 
     var width = 1920;
     var height = 1080;
+    var size;
     var ratio;
+    var fraction;
+    var mode;
 
     // User input
     inputWidth.onchange = function () {
@@ -17,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(valid(this.value)) {
             width = this.value;
         }
-        ratio = calcRatio(width, height);
-        printUser();
+        updateCalc();
+        printResult();
     };
     inputHeight.onchange = function () {
         // Update values
@@ -26,7 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
             height = this.value;
         }
         ratio = calcRatio(width, height);
-        printUser();
+        fraction = calcFraction(width, height);
+        updateCalc();
+        printResult();
     };
 
     // Functions and calculations
@@ -77,17 +85,40 @@ document.addEventListener('DOMContentLoaded', () => {
             left = 16;
             right = 10;
         }
-
         return left + ":" + right;
     }
+    function calcFraction(w, h) {
+        let f = w / h;
+        return f.toFixed(2);
+    }
+    function calcMode(w, h) {
+        let f = w / h;
+        if (f > 1) {
+            return "Landscape";
+        } else if (f < 1) {
+            return "Portrait"
+        } else if (f == 1) {
+            return "Square"
+        }
+        return f.toFixed(2);
+    }
+    function updateCalc() {
+        size = width.toString() + "x" + height.toString() + "px";
+        ratio = calcRatio(width, height);
+        fraction = calcFraction(width, height);
+        mode = calcMode(width, height);
+    }
 
-    function printUser() {
-        ratioTag.innerHTML = "Aspect Ratio: " + ratio;
+    function printResult() {
+        imageSizeTag.innerHTML = size;
+        aspectRatioTag.innerHTML = ratio;
+        fractionTag.innerHTML = fraction;
+        modeTag.innerHTML = mode;
     }
 
     // Default state
     inputWidth.placeholder = width;
     inputHeight.placeholder = height;
-    ratio = calcRatio(width, height);
-    printUser();
+    updateCalc();
+    printResult();
 });
