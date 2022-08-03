@@ -37,27 +37,21 @@ def index():
         return redirect("/")
     else:
         # GET method
-        title = "Free Image Resizer to resize images and photos online"
+        title = "Aspect Ratio Calculator"
         return render_template('index.html', title=title)
 
 
 # Contact Page
 @app.route("/contact")
 def contact_page():
-    title = "Contact Us - Free Image Resizer"
+    title = "Contact Us - Aspect Ratio Calculator"
     return render_template('contact.html', title=title)
 
 # Terms Page
 @app.route("/terms")
 def terms_page():
-    title = "Terms - Free Image Resizer"
+    title = "Terms - Aspect Ratio Calculator"
     return render_template('terms.html', title=title)
-
-# Other pages
-@app.route("/resize-image-to-1080x1080")
-def resizeimageto1080x1080_page():
-    title = "Resize image to 1080x1080 - Free Image Resizer"
-    return render_template('resize-image-to-1080x1080.html', title=title)
 
 @app.route('/sitemap.xml')
 def sitemap_xml():
