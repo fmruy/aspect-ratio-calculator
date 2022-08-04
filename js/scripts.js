@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mode_n1 = parseFloat(mode.split(":")[0]);
         mode_n2 = parseFloat(mode.split(":")[1]);
         if (mode_n1 && mode_n2) {
-            userPrint("This URL is not valid. User will be redirected to root.")
             return true;
         }
+        printUser("This URL is not valid. User will be redirected to root.")
         return false;
     }
     function isInteger(value) {
