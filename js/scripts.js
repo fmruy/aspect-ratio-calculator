@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mode_n1 && mode_n2) {
             return true;
         }
-        printUser("This URL is not valid. User will be redirected to root.")
+        //printUser("This URL is not valid. User will be redirected to root.")
         return false;
     }
     function isInteger(value) {

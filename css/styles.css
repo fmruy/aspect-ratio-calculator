@@ -166,20 +166,6 @@ a:hover {
 .temp-image {
   width: 100%;
 }
-.example-image {
-  margin: 6px;
-  cursor: pointer;
-  border: solid 2px var(--color-theme-2);
-  border-radius: var(--border-radius);
-  transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -webkit-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-}
-.example-image:hover {
-  border-color: var(--color-intense-1);
-  transform: scale(1.02);
-}
 .category-container {
 }
 .preset-size-button-container {
@@ -319,8 +305,8 @@ a:hover {
   height: 2.5em;
   border: solid 2px black;
   border-radius: var(--border-radius);
-  background-color: var(--color-theme-3);
-  border-color: var(--color-theme-1);
+  background-color: var(--color-theme-1);
+  border-color: var(--color-theme-4);
   color: var(--color-intense-10);
 }
 .input-value-selected {
