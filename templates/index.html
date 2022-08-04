@@ -14,45 +14,52 @@
     <div class="upload-box animate col-sm m-2 py-3 px-4">
         <h3>Custom Size Ratio Calculator</h3>
         <hr />
-        <div class="py-2">
-            Common Presets: --
+        <div class="py-1">
+            Preset:
+            <select class="input-select" id="inputGroupSelect01">
+                <option selected>Custom</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
         </div>
-        <div class="py-2">
+        <div class="py-1">
             Ratio Width:
-            <input min="0" max="10000" type="number" class="inputValue" id="input-width" placeholder="100">
-            px / cm / inch
+            <input min="0" max="10000" type="number" class="input-value" id="input-width" placeholder="100">
+            <small><span class="light-text">px / cm / inch</span></small>
         </div>
-        <div class="py-2">
+        <div class="py-1">
             Ratio Height:
-            <input min="0" max="10000" type="number" class="inputValue" id="input-height" placeholder="100"> px / cm /
-            inch
+            <input min="0" max="10000" type="number" class="input-value" id="input-height" placeholder="100">
+            <span class="light-text"><small>px / cm / inch</small></span>
         </div>
 
     </div>
     <div class="options-box animate col-sm m-2 py-3 px-4">
         <h3>Aspect Ratio Result</h3>
         <hr />
-
-        <div class="row">
+        <div class="row py-2">
+            <!--
             <div class="col-6-sm">
                 <div class="proportion-diagram">
                     <span>w</span>
                     <span>h</span>
                 </div>
             </div>
+            -->
             <div class="col-sm">
-                <h6>Your image size</h6>
-                <h5 id="image-size-tag">0000x0000px</h5>
+                <h6 class="light-text">Your image size</h6>
+                <h5 id="image-size-tag" class="mh40">0000x0000px</h5>
 
-                <h6>Aspect Ratio</h6>
-                <h5 id="aspect-ratio-tag">0:0</h5>
+                <h6 class="light-text">Aspect Ratio</h6>
+                <h5 id="aspect-ratio-tag" class="mh40">0:0</h5>
             </div>
             <div class="col-sm">
-                <h6>Fraction</h6>
-                <h6 id="fraction-tag">0.000</h6>
+                <h6 class="light-text">Fraction</h6>
+                <h6 id="fraction-tag" class="mh40">0.000</h6>
 
-                <h6>Mode</h6>
-                <h6 id="mode-tag">-</h6>
+                <h6 class="light-text">Mode</h6>
+                <h6 id="mode-tag" class="mh40">-</h6>
             </div>
         </div>
     </div>
