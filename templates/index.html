@@ -12,29 +12,28 @@
 <!-- Aspect Ratio Calculator -->
 <div class="row">
     <div class="upload-box animate col-sm m-2 py-3 px-4">
-        <h3>Custom Size Ratio Calculator</h3>
+        <h3><span id="mode-options-tag">{{ mode }}</span> Ratio Calculator</h3>
         <hr />
+        <small><span class="light-text">Insert a custom width or height.</span></small>
+        <!--
         <div class="py-1">
-            Preset:
-            <select class="input-select" id="inputGroupSelect01">
-                <option selected>Custom</option>
-                <option value="2">3:2</option>
-                <option value="3">4:3</option>
-                <option value="1">4:5</option>
-                <option value="3">16:9 - Standard Widescreen</option>
-                <option value="3">21:9 - Widescreen</option>
-                <option value="3">1.37:1 - Cinema Widescreen</option>
-                <option value="3">2.39:1 - Cinemascope</option>
+            Calculator Mode:
+            <select class="input-select" id="input-select">
+                <option value="0" selected>Custom Size</option>
+                <option value="1">16:9</option>
+                <option value="2">4:3</option>
+                <option value="3">3:2</option>
             </select>
         </div>
+        -->
         <div class="py-1">
             Ratio Width:
-            <input min="0" max="10000" type="number" class="input-value" id="input-width" placeholder="100">
+            <input min="1" max="10000" type="number" class="input-value" id="input-width" placeholder="100">
             <small><span class="light-text">px / cm / inch</span></small>
         </div>
         <div class="py-1">
             Ratio Height:
-            <input min="0" max="10000" type="number" class="input-value" id="input-height" placeholder="100">
+            <input min="1" max="10000" type="number" class="input-value" id="input-height" placeholder="100">
             <span class="light-text"><small>px / cm / inch</small></span>
         </div>
 
@@ -52,22 +51,36 @@
             </div>
             -->
             <div class="col-sm">
-                <h6 class="light-text">Your image size</h6>
-                <h5 id="image-size-tag" class="mh40">0000x0000px</h5>
-
                 <h6 class="light-text">Aspect Ratio</h6>
                 <h5 id="aspect-ratio-tag" class="mh40">0:0</h5>
+                
+                <h6 class="light-text">Your image size</h6>
+                <h5 id="image-size-tag" class="mh40">0000x0000px</h5>
             </div>
             <div class="col-sm">
                 <h6 class="light-text">Fraction</h6>
                 <h6 id="fraction-tag" class="mh40">0.000</h6>
 
                 <h6 class="light-text">Mode</h6>
-                <h6 id="mode-tag" class="mh40">-</h6>
+                <h6 id="mode-result-tag" class="mh40">-</h6>
             </div>
         </div>
     </div>
+    <div class="w-100"></div>
+    <div class="options-box animate col-sm m-2 py-3 px-4">
+        <h4>Preset sizes</h4>
+        <hr />
+        <ul>
+            <li><a href="/">Custom Size</a></li>
+            <li><a href="16:9">16:9</a></li>
+            <li><a href="4:3">4:3</a></li>
+            <li><a href="2:3">2:3</a></li>
+            <li><a href="3:2">3:2</a></li>
+            <li><a href="1:2">1:2</a></li>
+        </ul>
+    </div>
 </div>
+
 
 <!-- Page Content Block 2 -->
 <div class="spacer"></div>
@@ -88,30 +101,36 @@
 <div class="spacer"></div>
 
 <div class="row mb-5">
-    <h2 class="pb-4 slide-top-1">About Aspect Ratio</h2>
-    <div class="col-sm slide-top-2">
-        <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed as
+    <h2 class="pb-4">About Aspect Ratio</h2>
+    <div class="col-sm">
+        <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed
+            as
             two numbers separated by a colon (x:y).
         </p>
         <p>
-            For example, images with the aspect ratio of 4:3 will always have a width of 4 units and a height of 9 units
-            of the same length. This is easy to understand when the numbers are simple: an image of 1600x900 pixels has
+            For example, images with the aspect ratio of 4:3 will always have a width of 4 units and a height of 9
+            units
+            of the same length. This is easy to understand when the numbers are simple: an image of 1600x900 pixels
+            has
             an aspect ratio of 16:9, or an image of 3000x1500 has an aspect ratio of 2:1.
         </p>
 
     </div>
-    <div class="col-sm slide-top-2">
+    <div class="col-sm">
         <p>But it is more complicated when the numbers do not round to anything known, for example with Social Media
             sizes used by Facebook, Instagram, or Twitter, an image of 1200x628px need to have an aspect ratio of
             1.91:1.
 
         </p>
         <p>
-            To achieve results, we use a complicated formula that round in special cases to give a human-understandable
-            fraction. For example, when the left unit of the formula results in 8 units and the right unit results in 5
+            To achieve results, we use a complicated formula that round in special cases to give a
+            human-understandable
+            fraction. For example, when the left unit of the formula results in 8 units and the right unit results
+            in 5
             units, instead of using the mathematical value of 8:5 is standard to convert it to 16:10.
         </p>
     </div>
 </div>
+
 
 {% endblock %}

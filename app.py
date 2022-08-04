@@ -38,7 +38,8 @@ def index():
     else:
         # GET method
         title = "Aspect Ratio Calculator"
-        return render_template('index.html', title=title)
+        mode = "Custom Size"
+        return render_template('index.html', title=title, mode=mode)
 
 
 # Contact Page
@@ -53,14 +54,29 @@ def terms_page():
     title = "Terms - Aspect Ratio Calculator"
     return render_template('terms.html', title=title)
 
+
 @app.route('/sitemap.xml')
 def sitemap_xml():
     return send_from_directory(os.path.join(app.root_path, 'static'),'sitemap.xml',mimetype='application/xml')
+
 
 @app.route('/robots.txt')
 def robots_txt():
     return send_from_directory(os.path.join(app.root_path, 'static'),'robots.txt',mimetype='text/plain')
 
+
+# Preset Mode
+@app.route("/<url_mode>")
+def preset_mode_page(url_mode):
+    if True:
+        # TODO: Check url_mode is a valid preset size
+        #       otherwise go to index() page
+        mode = url_mode
+        title = mode + " - Aspect Ratio Calculator"
+        return render_template('index.html', title=title, mode=mode)
+    else:
+        title = "Aspect Ratio Calculator"
+        return render_template('index.html', title=title)
 
 
 

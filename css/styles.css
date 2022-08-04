@@ -46,7 +46,7 @@
   --color-theme-8: hsl(0, 0%, 20%);
   --color-theme-9: hsl(0, 0%, 10%);
   --color-theme-10: black;
-  --color-intense-1: #ec4e6e;
+  --color-intense-1: #2360c5;
 }
 
 /* Font-Face */
@@ -124,7 +124,7 @@ a:hover {
   background-color: var(--color-theme-2);
   border-radius: calc(var(--border-radius) * 2);
   z-index: 10;
-  border: solid var(--color-theme-2);
+
 }
 .options-box {
   background-color: var(--color-theme-2);
@@ -218,7 +218,7 @@ a:hover {
   color: var(--color-intense-1);
 }
 .border-intense {
-  border: var(--color-intense-1) solid;
+  border: var(--color-intense-1) solid 1.5px !important;
 }
 .alert-fixed {
   position: fixed;
@@ -247,35 +247,6 @@ a:hover {
 .btn {
   cursor: pointer;
 }
-.btn-resize-mode {
-  padding: 7px;
-  width: 100%;
-  border: solid 2px var(--color-theme-1);
-  border-radius: var(--border-radius);
-  background-color: var(--color-theme-1);
-  color: var(--color-theme-10);
-}
-.btn-resize-mode:hover,
-.btn-resize-mode-sel {
-  border-color: var(--color-intense-1);
-  color: var(--color-intense-1);
-}
-.btn-download {
-  padding: 7px;
-  width: 100%;
-  border: solid 2px black;
-  border-radius: var(--border-radius);
-  background-color: var(--color-theme-0);
-  border-color: var(--color-theme-0);
-  color: var(--color-intense-1);
-}
-.btn-download:hover {
-  border-color: var(--color-intense-1);
-  color: var(--color-intense-1);
-}
-.mobile-download-tag {
-  color: var(--color-theme-8);
-}
 .btn-intense {
   padding: 0.5em 1.2em;
   border-radius: var(--border-radius);
@@ -286,14 +257,6 @@ a:hover {
   background-color: var(--color-intense-1);
   border-color: var(--color-intense-1);
   color: var(--color-theme-0);
-}
-.btn-update {
-  padding: 7px;
-  width: 100%;
-  border: solid 2px black;
-  border-radius: var(--border-radius);
-  background-color: var(--color-theme-0);
-  color: var(--color-theme-10);
 }
 .btn-update:hover {
   color: var(--color-intense-1);
@@ -312,13 +275,7 @@ a:hover {
 .span-options {
   margin-right: 0.5em;
 }
-.type {
-  /* <<<< to be removed ? */
-  border-radius: 4px;
-  width: 50px;
-  border: 1px solid grey;
-  font-size: 0.95em;
-}
+
 .scale-slider {
   -webkit-appearance: none;
   appearance: none;
@@ -327,30 +284,9 @@ a:hover {
   background: var(--color-theme-0);
 }
 
-.scale-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 10px;
-  background: var(--color-theme-0);
-  border: var(--border-width) solid var(--color-intense-1);
-  overflow: visible;
-  cursor: pointer;
-}
-.scale-slider::-moz-range-thumb {
-  -moz-appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 10px;
-  background: var(--color-theme-0);
-  border: var(--border-width) solid var(--color-intense-1);
-  overflow: visible;
-  cursor: pointer;
-}
 .input-select {
   appearance: none;
 
-  text-align: center;
   padding-left: 0.6em;
   margin: 3px;
   height: 2.5em;
@@ -448,40 +384,7 @@ a:hover {
   }
 }
 
-/* FilePond adaptation */
-.filepond-container {
-  width: 100%;
-}
-.filepond--root {
-  margin-bottom: 0 !important;
-}
-.filepond--root .filepond--drop-label {
-  color: var(--color-theme-9);
-  font-size: 1.4em;
-}
-.filepond--file {
-  color: var(--color-theme-10) !important;
-  background-color: var(--color-theme-1);
-}
-.filepond--file-action-button {
-  cursor: pointer;
-  background-color: var(--color-theme-4) !important;
-}
-.filepond--panel-root {
-  background-color: transparent !important;
-  /*border: var(--border-width) solid var(--color-theme-3);*/
-}
-/* 
-  .filepond--root .filepond--drop-label {
-    height: 500px;<<<<< CODE NOT WORKING ??
-    color: var(--color-theme-9);
-    font-size: 1.4em;
-  }*/
-/*
-  .filepond--root .filepond--credits {
-    display: none;
-  }
-  */
+
 
 /* Toggle Light Dark mode */
 .mode-toggle {

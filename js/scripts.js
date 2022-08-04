@@ -2,54 +2,165 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // Elements
+    const DEBUG_PRINT = true;
+
+    //const inputSelect = document.getElementById("input-select");
     const inputWidth = document.getElementById("input-width");
     const inputHeight = document.getElementById("input-height");
+    const modeOptionsTag = document.getElementById("mode-options-tag");
     const errorTag = document.getElementById("error-tag");
     const imageSizeTag = document.getElementById("image-size-tag");
     const aspectRatioTag = document.getElementById("aspect-ratio-tag");
     const fractionTag = document.getElementById("fraction-tag");
-    const modeTag = document.getElementById("mode-tag");
+    const modeResultTag = document.getElementById("mode-result-tag");
 
-    var width = 1920;
-    var height = 1080;
+    var mode = modeOptionsTag.innerHTML;
+    var modeValid = false;
+    var mode_n1;
+    var mode_n2;
+    var initialWidth = 1920;
+    var initialHeight = 1080;
+    var width = initialWidth;
+    var height = initialHeight;
     var size;
     var ratio;
     var fraction;
-    var mode;
+    var textMode;
+
+    // -------------------- User actions, Auxiliary functions --------------------
+    function consolePrint() {
+        if (DEBUG_PRINT) {
+            if (arguments.length == 0) { console.warn("Console.log(?) - arg missing"); }
+            if (arguments.length > 0) {
+                let arg = [];
+                for (var i = 0; i < arguments.length; i++) {
+                    arg.push(arguments[i]);
+                }
+                console.log(...arg);
+            }
+        }
+    }
+    function printUser(message) {
+        errorTag.innerHTML = message;
+    }
 
     // User input
     inputWidth.onchange = function () {
         // Update values
-        if(valid(this.value)) {
+        if (valid(this.value)) {
             width = this.value;
         }
+        if (modeValid) {
+            calcRemainValue("h");
+        }
+        cleanInputStyle(this);
         updateCalc();
         printResult();
     };
     inputHeight.onchange = function () {
         // Update values
-        if(valid(this.value)) {
+        if (valid(this.value)) {
             height = this.value;
         }
-        ratio = calcRatio(width, height);
-        fraction = calcFraction(width, height);
+        if (modeValid) {
+            calcRemainValue("w");
+        }
+        cleanInputStyle(this);
         updateCalc();
         printResult();
     };
+    function cleanInputStyle(element) {
+        if (modeValid) {
+            inputWidth.classList.remove(("border-intense"));
+            inputHeight.classList.remove(("border-intense"));
+        };
+        element.classList.add("border-intense");
+    };
+    
 
     // Functions and calculations
+    function modeIsValid() {
+        mode_n1 = parseFloat(mode.split(":")[0]);
+        mode_n2 = parseFloat(mode.split(":")[1]);
+        if (mode_n1 && mode_n2) {
+            return true;
+        }
+        return false;
+    }
     function isInteger(value) {
         return /^[0-9]+$/.test(value);
     }
+    function isFloat(value) {
+        if (
+            typeof value === 'number' &&
+            !Number.isNaN(value) &&
+            !Number.isInteger(value)
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+    function rounded(value) {
+        // Round to .001
+        let fn = Math.round(value*1000)/1000;
+        if (value > 10 || value < 100) {
+            // Round to .01
+            fn = Math.round(value*100)/100;
+        }
+        if (value >= 100) {
+            // Round to .1
+            fn = Math.round(value*10)/10;
+        }
+        return fn;
+    }
+    
     function valid(n) {
-        if (isNaN(n) || !isInteger(n)) {
-            errorTag.innerHTML = 'Please enter only integer numbers.';
+        if (isNaN(n) || !isInteger(n) || n == 0) {
+            printUser('Please enter only integer numbers.');
             return false;
         }
         else {
             errorTag.innerHTML = '';
             return true;
         }
+    }
+    function calcRemainValue(remain) {
+        // Abort if not valid
+        if (!modeValid) { return; }
+        
+        // Calculate remain value
+        if (remain == "w") {
+            let f = mode_n2 / mode_n1; // TODO: ERROR IN FUNCTION
+            printUser("WIP: There is an error in this calculation. Sorry.")
+            let n = (height * f);
+
+            // Assign to global variable
+            width = n;
+
+            // Assign in input element
+            if(inputWidth.value == "") {
+                inputWidth.placeholder = rounded(n);
+            } else {
+                inputWidth.value = rounded(n);
+            }
+        }
+        if (remain == "h") {
+            let f = mode_n2 / mode_n1;
+            //let n = Math.round(width * f);
+            let n = (width * f);
+
+            // Assign to global variable
+            height = n;
+
+            // Assign in input element
+            if(inputHeight.value == "") {
+                inputHeight.placeholder = rounded(n);
+            } else {
+                inputHeight.value = rounded(n);
+            }
+        }
+        calcRatio(width, height);
     }
     function calcRatio(numerator, denominator) {
         var gcd, temp, divisor, left, right;
@@ -91,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let f = w / h;
         return f.toFixed(2);
     }
-    function calcMode(w, h) {
+    function calcTextMode(w, h) {
         let f = w / h;
         if (f > 1) {
             return "Landscape";
@@ -103,20 +214,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return f.toFixed(2);
     }
     function updateCalc() {
-        size = width.toString() + "x" + height.toString() + "px";
+        size = rounded(width) + "x" + rounded(height) + "px";
         ratio = calcRatio(width, height);
         fraction = calcFraction(width, height);
-        mode = calcMode(width, height);
+        textMode = calcTextMode(width, height);
     }
-
     function printResult() {
         imageSizeTag.innerHTML = size;
         aspectRatioTag.innerHTML = ratio;
         fractionTag.innerHTML = fraction;
-        modeTag.innerHTML = mode;
+        modeResultTag.innerHTML = textMode;
     }
 
     // Default state
+    modeValid = modeIsValid();
+    consolePrint("Predefined mode valid: " + modeValid);
+    if (mode_n1 && mode_n2) { consolePrint("Mode x:y :", mode_n1, mode_n2); }
+    if (modeValid) { calcRemainValue("h"); };
     inputWidth.placeholder = width;
     inputHeight.placeholder = height;
     updateCalc();
