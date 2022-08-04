@@ -5,10 +5,6 @@
 
 <!-- Page Content Block 1 -->
 
-<!-- Message box -->
-<div id="live-alert-placeholder"></div>
-<div id="error-tag"></div>
-
 <!-- Aspect Ratio Calculator -->
 <div class="row">
     <div class="upload-box animate col-sm m-2 py-3 px-4">
@@ -37,6 +33,11 @@
             <span class="light-text"><small>px / cm / inch</small></span>
         </div>
 
+
+        <!-- Message box -->
+        <div id="live-alert-placeholder"></div>
+        <div id="error-tag" class="text-intense"></div>
+
     </div>
     <div class="options-box animate col-sm m-2 py-3 px-4">
         <h3>Aspect Ratio Result</h3>
@@ -55,7 +56,7 @@
                 <h5 id="aspect-ratio-tag" class="text-intense mh40">0:0</h5>
 
                 <h6 class="light-text">Your image size</h6>
-                <h5 id="image-size-tag" class="mh40">0000x0000px</h5>
+                <h5 id="image-size-tag" class="mh40">0000x0000</h5>
             </div>
             <div class="col-sm">
                 <h6 class="light-text">Fraction</h6>
@@ -65,10 +66,11 @@
                 <h6 id="mode-result-tag" class="mh40">-</h6>
             </div>
         </div>
+
     </div>
     <div class="w-100"></div>
     <div class="options-box animate col-sm m-2 py-3 px-4">
-        <h4>Preset sizes</h4>
+        <h4 id="preset-size">Preset sizes</h4>
         <hr />
         <ul>
             <li><a href="/">Custom Size</a></li>
@@ -91,20 +93,20 @@
 </div>
 
 
+
 <!-- Page Content Block 2 -->
 <div class="spacer"></div>
 <div class="row gx-lg-5">
     <h2 class="my-4">How to use an Aspect Ratio Calculator</h2>
+    <p>How to calculate a <a href="/">Custom Size</a>:</p>
     <ol class="mx-4">
-        <li>
-            Insert the first value (width or height).
-        </li>
-        <li>
-            Select a preset, or insert the other value.
-        </li>
-        <li>
-            Read the result.
-        </li>
+        <li>Insert the first value (width or height).</li>
+        <li>Select a preset, or insert the other value.</li>
+    </ol>
+    <p>How to use a <a href="/#preset-size">Preset Size</a>:</p>
+    <ol class="mx-4">
+        <li>Select a preset from the list, for example <a href="16:9">16:9</a> or <a href="4:3">4:3</a>.</li>
+        <li>Insert one of the values: width or height.</li>
     </ol>
 </div>
 <div class="spacer"></div>

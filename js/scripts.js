@@ -135,14 +135,23 @@ document.addEventListener('DOMContentLoaded', () => {
             let fraction = mode_n2 / mode_n1;
             let n = (height * 1 / fraction);
 
-            // Assign to global variable > rounded to avoid strange numbers
-            width = Math.round(n);
+            // Assign to global variable > rounded width to avoid strange numbers
+            consolePrint(n)
+            let n_fixed = n.toFixed(2);  // TODO NOT WORKING
+            let n_round = Math.round(n);  // TODO NOT WORKING
+            width = n;
 
-            consolePrint(n, Math.round(n), rounded(n))
+            // Inform user if doen't match
+            if (Number(n_fixed) !== n_round && (width + 0.5) !== n_round) {
+                width = n_round;
+                calcRemainValue("h");
+                userPrint("This height makes a complicated number, we rounded values to find the most closest combination possible.");
+            }
 
             // Assign in input element
-            inputWidth.value = "";
-            inputWidth.placeholder = Math.round(n);
+            //inputWidth.value = "";
+            //inputWidth.placeholder = rounded(n);
+            inputWidth.value = rounded(n);
         }
         // Calculate remain value Height
         if (remain == "h") {
@@ -154,8 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
             height = n;
 
             // Assign in input element
-            inputHeight.value = "";
-            inputHeight.placeholder = rounded(n);
+            //inputHeight.value = "";
+            //inputHeight.placeholder = rounded(n);
+            inputHeight.value = rounded(n);
         }
         calcRatio(width, height);
     }
@@ -211,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return f.toFixed(2);
     }
     function updateCalc() {
-        size = rounded(width) + "x" + rounded(height) + "px";
+        size = rounded(width) + "x" + rounded(height);
         ratio = calcRatio(width, height);
         fraction = calcFraction(width, height);
         textMode = calcTextMode(width, height);
