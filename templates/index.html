@@ -12,7 +12,7 @@
 <!-- Aspect Ratio Calculator -->
 <div class="row">
     <div class="upload-box animate col-sm m-2 py-3 px-4">
-        <h3><span id="mode-options-tag">{{ mode }}</span> Ratio Calculator</h3>
+        <h3><span id="mode-options-tag" class="text-intense">{{ mode }}</span> Ratio Calculator</h3>
         <hr />
         <small><span class="light-text">Insert a custom width or height.</span></small>
         <!--
@@ -28,12 +28,12 @@
         -->
         <div class="py-1">
             Ratio Width:
-            <input min="1" max="10000" type="number" class="input-value" id="input-width" placeholder="100">
+            <input min="1" max="20000" type="number" class="input-value" id="input-width" placeholder="100">
             <small><span class="light-text">px / cm / inch</span></small>
         </div>
         <div class="py-1">
             Ratio Height:
-            <input min="1" max="10000" type="number" class="input-value" id="input-height" placeholder="100">
+            <input min="1" max="20000" type="number" class="input-value" id="input-height" placeholder="100">
             <span class="light-text"><small>px / cm / inch</small></span>
         </div>
 
@@ -52,8 +52,8 @@
             -->
             <div class="col-sm">
                 <h6 class="light-text">Aspect Ratio</h6>
-                <h5 id="aspect-ratio-tag" class="mh40">0:0</h5>
-                
+                <h5 id="aspect-ratio-tag" class="text-intense mh40">0:0</h5>
+
                 <h6 class="light-text">Your image size</h6>
                 <h5 id="image-size-tag" class="mh40">0000x0000px</h5>
             </div>
@@ -72,11 +72,20 @@
         <hr />
         <ul>
             <li><a href="/">Custom Size</a></li>
+        </ul>
+        <ul>
             <li><a href="16:9">16:9</a></li>
             <li><a href="4:3">4:3</a></li>
             <li><a href="2:3">2:3</a></li>
             <li><a href="3:2">3:2</a></li>
             <li><a href="1:2">1:2</a></li>
+        </ul>
+        <ul>
+            <li><a href="4:3">SVGA / XGA (4:3)</a></li>
+            <li><a href="5:4">SXGA (5:4)</a></li>
+            <li><a href="5:3">WXGA (5:3)</a></li>
+            <li><a href="16:10">WXGA+ / WSXGA+ (16:10)</a></li>
+            <li><a href="16:9">4K / HD / FHD (16:9)</a></li>
         </ul>
     </div>
 </div>
@@ -104,8 +113,7 @@
     <h2 class="pb-4">About Aspect Ratio</h2>
     <div class="col-sm">
         <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed
-            as
-            two numbers separated by a colon (x:y).
+            as two numbers separated by a colon <code>x:y</code>.
         </p>
         <p>
             For example, images with the aspect ratio of 4:3 will always have a width of 4 units and a height of 9

@@ -204,7 +204,7 @@ a:hover {
   color: var(--color-intense-1);
 }
 .border-intense {
-  border: var(--color-intense-1) solid 1.5px !important;
+  border: var(--color-intense-1) solid 0.15em !important;
 }
 .alert-fixed {
   position: fixed;
@@ -222,16 +222,11 @@ a:hover {
   /* Icons in button */
   padding-right: 10px;
 }
-.arr-resize-mode {
-  color: var(--color-intense-1);
-  opacity: 0;
-  font-size: 1.4em;
-}
-.arr-resize-mode-sel {
-  opacity: 1;
-}
 .btn {
   cursor: pointer;
+}
+.text-intense {
+  color: var(--color-intense-1);
 }
 .btn-intense {
   padding: 0.5em 1.2em;
@@ -348,26 +343,6 @@ a:hover {
   width: 180px;
   height: 22px;
   background-size: contain;
-}
-
-/* Animations */
-.slide-top-1 {
-  animation-duration: 1s;
-  animation-name: slidetotop;
-}
-.slide-top-2 {
-  animation-duration: 1.5s;
-  animation-name: slidetotop;
-}
-@keyframes slidetotop {
-  from {
-    /*margin-top: 30px;*/
-    opacity: 0.2;
-  }
-  to {
-    /*margin-top: 0px;*/
-    opacity: 1;
-  }
 }
 
 

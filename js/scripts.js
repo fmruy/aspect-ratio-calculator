@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    function printUser(message) {
+    function userPrint(message) {
         errorTag.innerHTML = message;
     }
 
@@ -49,11 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update values
         if (valid(this.value)) {
             width = this.value;
+        } else {
+            inputWidth.value = "";
+            return;
         }
-        if (modeValid) {
-            calcRemainValue("h");
-        }
-        cleanInputStyle(this);
+        if (modeValid) { calcRemainValue("h"); };
+        asignStyle(this);
         updateCalc();
         printResult();
     };
@@ -61,45 +62,40 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update values
         if (valid(this.value)) {
             height = this.value;
+        } else {
+            inputHeight.value = "";
+            return;
         }
-        if (modeValid) {
-            calcRemainValue("w");
-        }
-        cleanInputStyle(this);
+        if (modeValid) { calcRemainValue("w"); }
+        asignStyle(this);
         updateCalc();
         printResult();
     };
-    function cleanInputStyle(element) {
+    
+    function asignStyle(element) {
         if (modeValid) {
             inputWidth.classList.remove(("border-intense"));
             inputHeight.classList.remove(("border-intense"));
         };
         element.classList.add("border-intense");
     };
-    
 
     // Functions and calculations
     function modeIsValid() {
-        mode_n1 = parseFloat(mode.split(":")[0]);
-        mode_n2 = parseFloat(mode.split(":")[1]);
-        if (mode_n1 && mode_n2) {
-            return true;
+        if(mode == "Custom Size") {
+            return false;
         }
-        //printUser("This URL is not valid. User will be redirected to root.")
+        mode_n1 = Number(mode.split(":")[0]);
+        mode_n2 = Number(mode.split(":")[1]);
+        if (mode_n1 && mode_n2) { return true; };
+        userPrint("This URL is not valid Number. User will be redirected to root.")
         return false;
     }
     function isInteger(value) {
         return /^[0-9]+$/.test(value);
     }
     function isFloat(value) {
-        if (
-            typeof value === 'number' &&
-            !Number.isNaN(value) &&
-            !Number.isInteger(value)
-        ) {
-            return true;
-        }
-
+        if (!Number.isNaN(value) && !Number.isInteger(value)) { return true; }
         return false;
     }
     function rounded(value) {
@@ -117,49 +113,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function valid(n) {
-        if (isNaN(n) || !isInteger(n) || n == 0) {
-            printUser('Please enter only integer numbers.');
+        if (isNaN(n) || !isFloat(n)) {
+            userPrint('Please enter only integer numbers.');
             return false;
-        }
-        else {
+        } else if (n < 1) {
+            userPrint('Please enter a number greater than 0.');
+            return false;
+        } else if (n > 20000) {
+            userPrint('Please enter a number less than 20000.');
+            return false;
+        } else {
             errorTag.innerHTML = '';
             return true;
         }
     }
     function calcRemainValue(remain) {
-        // Abort if not valid
+        // Abort if not valid preset
         if (!modeValid) { return; }
-        
-        // Calculate remain value
+        // Calculate remain value Width
         if (remain == "w") {
-            let f = mode_n2 / mode_n1; // TODO: ERROR IN FUNCTION
-            printUser("WIP: There is an error in this calculation. Sorry.")
-            let n = (height * f);
+            let fraction = mode_n2 / mode_n1;
+            let n = (height * 1 / fraction);
 
-            // Assign to global variable
-            width = n;
+            // Assign to global variable > rounded to avoid strange numbers
+            width = Math.round(n);
+
+            consolePrint(n, Math.round(n), rounded(n))
 
             // Assign in input element
-            if(inputWidth.value == "") {
-                inputWidth.placeholder = rounded(n);
-            } else {
-                inputWidth.value = rounded(n);
-            }
+            inputWidth.value = "";
+            inputWidth.placeholder = Math.round(n);
         }
+        // Calculate remain value Height
         if (remain == "h") {
-            let f = mode_n2 / mode_n1;
+            let fraction = mode_n2 / mode_n1;
             //let n = Math.round(width * f);
-            let n = (width * f);
+            let n = (width * fraction);
 
             // Assign to global variable
             height = n;
 
             // Assign in input element
-            if(inputHeight.value == "") {
-                inputHeight.placeholder = rounded(n);
-            } else {
-                inputHeight.value = rounded(n);
-            }
+            inputHeight.value = "";
+            inputHeight.placeholder = rounded(n);
         }
         calcRatio(width, height);
     }
@@ -232,6 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
     consolePrint("Predefined mode valid: " + modeValid);
     if (mode_n1 && mode_n2) { consolePrint("Mode x:y :", mode_n1, mode_n2); }
     if (modeValid) { calcRemainValue("h"); };
+    asignStyle(inputHeight);
+    asignStyle(inputWidth);
     inputWidth.placeholder = width;
     inputHeight.placeholder = height;
     updateCalc();
