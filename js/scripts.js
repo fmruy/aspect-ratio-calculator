@@ -136,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let n = (height * 1 / fraction);
 
             // Assign to global variable > rounded width to avoid strange numbers
-            consolePrint(n)
             let n_fixed = n.toFixed(2);  // TODO NOT WORKING
             let n_round = Math.round(n);  // TODO NOT WORKING
             width = n;

@@ -206,6 +206,7 @@ a:hover {
 .border-intense {
   border: var(--color-intense-1) solid 0.15em !important;
 }
+
 .alert-fixed {
   position: fixed;
   top: 1em;

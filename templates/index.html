@@ -4,46 +4,53 @@
 {% block content %}
 
 <!-- Page Content Block 1 -->
-
 <!-- Aspect Ratio Calculator -->
-<div class="row">
-    <div class="upload-box animate col-sm m-2 py-3 px-4">
-        <h3><span id="mode-options-tag" class="text-intense">{{ mode }}</span> Ratio Calculator</h3>
-        <hr />
-        <small><span class="light-text">Insert a custom width or height.</span></small>
-        <!--
-        <div class="py-1">
-            Calculator Mode:
-            <select class="input-select" id="input-select">
-                <option value="0" selected>Custom Size</option>
-                <option value="1">16:9</option>
-                <option value="2">4:3</option>
-                <option value="3">3:2</option>
-            </select>
-        </div>
-        -->
-        <div class="py-1">
-            Ratio Width:
-            <input min="1" max="20000" type="number" class="input-value" id="input-width" placeholder="100">
-            <small><span class="light-text">px / cm / inch</span></small>
-        </div>
-        <div class="py-1">
-            Ratio Height:
-            <input min="1" max="20000" type="number" class="input-value" id="input-height" placeholder="100">
-            <span class="light-text"><small>px / cm / inch</small></span>
-        </div>
 
+<div class="row h-100">
+    <div class="col-sm p-0 mb-3">
+        <div class="row h-100 m-2">
+            <div class="upload-box animate py-3 px-4">
+                <h3><span id="mode-options-tag" class="text-intense">{{ mode }}</span> Ratio Calculator</h3>
+                <hr />
+                <small><span class="light-text">Insert a custom width or height.</span></small>
 
-        <!-- Message box -->
-        <div id="live-alert-placeholder"></div>
-        <div id="error-tag" class="text-intense"></div>
+                <div class="py-1">
+                    Ratio Width:
+                    <input min="1" max="20000" type="number" class="input-value" id="input-width" placeholder="100">
+                    <small><span class="light-text">px / cm / inch</span></small>
+                </div>
+                <div class="py-1">
+                    Ratio Height:
+                    <input min="1" max="20000" type="number" class="input-value" id="input-height" placeholder="100">
+                    <span class="light-text"><small>px / cm / inch</small></span>
+                </div>
+                <!--
+                <div class="py-1">
+                    Calculator Mode:
+                    <select class="input-select" id="input-select">
+                        <option value="0" selected>Custom Size</option>
+                        <option value="1">16:9</option>
+                        <option value="2">4:3</option>
+                        <option value="3">3:2</option>
+                    </select>
+                </div>
+                -->
+                <!-- Message box -->
+                <div id="live-alert-placeholder"></div>
+                <div id="error-tag" class="text-intense"></div>
 
+            </div>
+        </div>
     </div>
-    <div class="options-box animate col-sm m-2 py-3 px-4">
-        <h3>Aspect Ratio Result</h3>
-        <hr />
-        <div class="row py-2">
-            <!--
+
+
+    <div class="col-sm p-0 mb-3">
+        <div class="row h-100 m-2">
+            <div class="options-box animate col-sm py-3 px-4">
+                <h3>Aspect Ratio Result</h3>
+                <hr />
+                <div class="row py-2">
+                    <!--
             <div class="col-6-sm">
                 <div class="proportion-diagram">
                     <span>w</span>
@@ -51,46 +58,63 @@
                 </div>
             </div>
             -->
-            <div class="col-sm">
-                <h6 class="light-text">Aspect Ratio</h6>
-                <h5 id="aspect-ratio-tag" class="text-intense mh40">0:0</h5>
+                    <div class="col-sm">
+                        <h6 class="light-text">Aspect Ratio</h6>
+                        <h5 id="aspect-ratio-tag" class="text-intense mh40">0:0</h5>
 
-                <h6 class="light-text">Your image size</h6>
-                <h5 id="image-size-tag" class="mh40">0000x0000</h5>
-            </div>
-            <div class="col-sm">
-                <h6 class="light-text">Fraction</h6>
-                <h6 id="fraction-tag" class="mh40">0.000</h6>
+                        <h6 class="light-text">Your image size</h6>
+                        <h5 id="image-size-tag" class="mh40">0000x0000</h5>
+                    </div>
+                    <div class="col-sm">
+                        <h6 class="light-text">Fraction</h6>
+                        <h6 id="fraction-tag" class="mh40">0.000</h6>
 
-                <h6 class="light-text">Mode</h6>
-                <h6 id="mode-result-tag" class="mh40">-</h6>
+                        <h6 class="light-text">Mode</h6>
+                        <h6 id="mode-result-tag" class="mh40">-</h6>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </div>
 
-    </div>
+
+
     <div class="w-100"></div>
-    <div class="options-box animate col-sm m-2 py-3 px-4">
-        <h4 id="preset-size">Preset sizes</h4>
-        <hr />
-        <ul>
-            <li><a href="/">Custom Size</a></li>
-        </ul>
-        <ul>
-            <li><a href="16:9">16:9</a></li>
-            <li><a href="4:3">4:3</a></li>
-            <li><a href="2:3">2:3</a></li>
-            <li><a href="3:2">3:2</a></li>
-            <li><a href="1:2">1:2</a></li>
-        </ul>
-        <ul>
-            <li><a href="4:3">SVGA / XGA (4:3)</a></li>
-            <li><a href="5:4">SXGA (5:4)</a></li>
-            <li><a href="5:3">WXGA (5:3)</a></li>
-            <li><a href="16:10">WXGA+ / WSXGA+ (16:10)</a></li>
-            <li><a href="16:9">4K / HD / FHD (16:9)</a></li>
-        </ul>
+
+    <div class="col-sm p-0 mb-3">
+        <div class="row h-100 m-2">
+            <div class="options-box animate col-sm py-3 px-4">
+                <h4 id="preset-size">Preset sizes</h4>
+                <hr />
+                <ul>
+                    <li><a href="/">Custom Size</a></li>
+                </ul>
+                <ul>
+                    <li><a href="16:9">16:9</a></li>
+                    <li><a href="4:3">4:3</a></li>
+                    <li><a href="2:3">2:3</a></li>
+                    <li><a href="3:2">3:2</a></li>
+                    <li><a href="1:2">1:2</a></li>
+                </ul>
+                <ul>
+                    <li><a href="4:3">SVGA / XGA (4:3)</a></li>
+                    <li><a href="5:4">SXGA (5:4)</a></li>
+                    <li><a href="5:3">WXGA (5:3)</a></li>
+                    <li><a href="16:10">WXGA+ / WSXGA+ (16:10)</a></li>
+                    <li><a href="16:9">4K / HD / FHD (16:9)</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -99,15 +123,17 @@
 <div class="row gx-lg-5">
     <h2 class="my-4">How to use an Aspect Ratio Calculator</h2>
     <p>How to calculate a <a href="/">Custom Size</a>:</p>
-    <ol class="mx-4">
-        <li>Insert the first value (width or height).</li>
-        <li>Select a preset, or insert the other value.</li>
-    </ol>
-    <p>How to use a <a href="/#preset-size">Preset Size</a>:</p>
-    <ol class="mx-4">
-        <li>Select a preset from the list, for example <a href="16:9">16:9</a> or <a href="4:3">4:3</a>.</li>
-        <li>Insert one of the values: width or height.</li>
-    </ol>
+    <div class="container">
+        <ol>
+            <li class="">Insert the first value (width or height).</li>
+            <li class="">Select a preset, or insert the other value.</li>
+        </ol>
+        <p>How to use a <a href="/#preset-size">Preset Size</a>:</p>
+        <ol class="">
+            <li>Select a preset from the list, for example <a href="16:9">16:9</a> or <a href="4:3">4:3</a>.</li>
+            <li>Insert one of the values: width or height.</li>
+        </ol>
+    </div>
 </div>
 <div class="spacer"></div>
 
