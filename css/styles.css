@@ -31,7 +31,7 @@
     --color-theme-8: hsl(0, 0%, 80%);
     --color-theme-9: hsl(0, 0%, 90%);
     --color-theme-10: white;
-    --color-intense-1: #ec4e6e;
+    --color-intense-1: #79afff;
     */
 
   /* White */
@@ -108,14 +108,15 @@ a:hover {
 .link-soft {
   color: var(--color-theme-6);
 }
+code {
+  color: var(--color-intense-1);
+}
 
 /* Upload Containers, Box and Upload */
 .container {
   color: var(--color-theme-10);
 }
-.upload-container {
-}
-.animate {
+.animate, input {
   transition: color var(--animate-speed) ease-in-out,
     background var(--animate-speed) ease-in-out;
 }
@@ -258,13 +259,6 @@ a:hover {
   margin-right: 0.5em;
 }
 
-.scale-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 5px;
-  background: var(--color-theme-0);
-}
 
 .input-select {
   appearance: none;
@@ -297,7 +291,7 @@ a:hover {
 .input-value {
   padding-left: 0.6em;
   margin: 3px;
-  width: 40%;
+
   height: 2.5em;
   border: solid 2px black;
   border-radius: var(--border-radius);
@@ -310,42 +304,6 @@ a:hover {
 }
 
 /* Sprites and Images */
-.gr-light {
-  z-index: 5;
-}
-.gr-logo-light {
-  /*background-image: url("/assets/grLogo-b.svg");*/
-  background-repeat: no-repeat;
-  background-position: -15px -3px;
-  width: 110px;
-  height: 110px;
-}
-.gr-logo-dark {
-  /*background-image: url("/assets/grLogo-w.svg");*/
-  background-repeat: no-repeat;
-  background-position: -15px -3px;
-  width: 110px;
-  height: 110px;
-  opacity: 0;
-  position: absolute;
-}
-
-.gr-02 {
-  background-image: url("../assets/gr02.svg");
-  background-repeat: no-repeat;
-  width: 35px;
-  height: 35px;
-  background-size: contain;
-}
-.gr-03 {
-  background-image: url("../assets/gr03.svg");
-  background-repeat: no-repeat;
-  width: 253px;
-  width: 180px;
-  height: 22px;
-  background-size: contain;
-}
-
 
 
 /* Toggle Light Dark mode */
@@ -464,7 +422,7 @@ body.dark .toggle-switch:hover:after {
   border-radius: var(--border-radius);
 }
 .mh40 {
-  min-height: 40px;
+  min-height: 35px;
 }
 .light-text {
   color: var(--color-theme-5);
@@ -472,9 +430,7 @@ body.dark .toggle-switch:hover:after {
 
 /* Mobile Adjustemnts Portrait */
 @media only screen and (max-width: 600px) {
-  .mh40 {
-    min-height: 0px;
-  }
+  
   .main-title h2 {
     font-size: 1.15em;
   }

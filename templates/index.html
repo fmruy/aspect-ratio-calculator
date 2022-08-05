@@ -6,10 +6,10 @@
 <!-- Page Content Block 1 -->
 <!-- Aspect Ratio Calculator -->
 
-<div class="row h-100">
+<div class="row">
     <div class="col-sm p-0 mb-3">
         <div class="row h-100 m-2">
-            <div class="upload-box animate py-3 px-4">
+            <div class="upload-box animate pt-3 px-4">
                 <h3><span id="mode-options-tag" class="text-intense">{{ mode }}</span> Ratio Calculator</h3>
                 <hr />
                 <small><span class="light-text">Insert a custom width or height.</span></small>
@@ -46,26 +46,26 @@
 
     <div class="col-sm p-0 mb-3">
         <div class="row h-100 m-2">
-            <div class="options-box animate col-sm py-3 px-4">
+            <div class="options-box animate col-sm pt-3 px-4">
                 <h3>Aspect Ratio Result</h3>
                 <hr />
                 <div class="row py-2">
                     <!--
-            <div class="col-6-sm">
-                <div class="proportion-diagram">
-                    <span>w</span>
-                    <span>h</span>
-                </div>
-            </div>
-            -->
-                    <div class="col-sm">
+                    <div class="col-6-sm">
+                        <div class="proportion-diagram">
+                            <span>w</span>
+                            <span>h</span>
+                        </div>
+                    </div>
+                    -->
+                    <div class="col">
                         <h6 class="light-text">Aspect Ratio</h6>
                         <h5 id="aspect-ratio-tag" class="text-intense mh40">0:0</h5>
 
                         <h6 class="light-text">Your image size</h6>
                         <h5 id="image-size-tag" class="mh40">0000x0000</h5>
                     </div>
-                    <div class="col-sm">
+                    <div class="col">
                         <h6 class="light-text">Fraction</h6>
                         <h6 id="fraction-tag" class="mh40">0.000</h6>
 
@@ -118,55 +118,55 @@
 
 
 
-<!-- Page Content Block 2 -->
-<div class="spacer"></div>
-<div class="row gx-lg-5">
-    <h2 class="my-4">How to use an Aspect Ratio Calculator</h2>
-    <p>How to calculate a <a href="/">Custom Size</a>:</p>
-    <div class="container">
-        <ol>
-            <li class="">Insert the first value (width or height).</li>
-            <li class="">Select a preset, or insert the other value.</li>
-        </ol>
-        <p>How to use a <a href="/#preset-size">Preset Size</a>:</p>
-        <ol class="">
-            <li>Select a preset from the list, for example <a href="16:9">16:9</a> or <a href="4:3">4:3</a>.</li>
-            <li>Insert one of the values: width or height.</li>
-        </ol>
+    <!-- Page Content Block 2 -->
+    <div class="spacer"></div>
+    <div class="row gx-lg-5">
+        <h2 class="my-4">How to use an Aspect Ratio Calculator</h2>
+        <p>How to calculate a <a href="/">Custom Size</a>:</p>
+        <div class="container">
+            <ol>
+                <li class="">Insert the first value (width or height).</li>
+                <li class="">Select a preset, or insert the other value.</li>
+            </ol>
+            <p>How to use a <a href="/#preset-size">Preset Size</a>:</p>
+            <ol class="">
+                <li>Select a preset from the list, for example <a href="16:9">16:9</a> or <a href="4:3">4:3</a>.</li>
+                <li>Insert one of the values: width or height.</li>
+            </ol>
+        </div>
     </div>
-</div>
-<div class="spacer"></div>
+    <div class="spacer"></div>
 
-<div class="row mb-5">
-    <h2 class="pb-4">About Aspect Ratio</h2>
-    <div class="col-sm">
-        <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed
-            as two numbers separated by a colon <code>x:y</code>.
-        </p>
-        <p>
-            For example, images with the aspect ratio of 4:3 will always have a width of 4 units and a height of 9
-            units
-            of the same length. This is easy to understand when the numbers are simple: an image of 1600x900 pixels
-            has
-            an aspect ratio of 16:9, or an image of 3000x1500 has an aspect ratio of 2:1.
-        </p>
+    <div class="row mb-5">
+        <h2 class="pb-4">About Aspect Ratio</h2>
+        <div class="col-sm">
+            <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed
+                as two numbers separated by a colon <code>x:y</code>.
+            </p>
+            <p>
+                For example, images with the aspect ratio of 4:3 will always have a width of 4 units and a height of 9
+                units
+                of the same length. This is easy to understand when the numbers are simple: an image of 1600x900 pixels
+                has
+                an aspect ratio of 16:9, or an image of 3000x1500 has an aspect ratio of 2:1.
+            </p>
 
+        </div>
+        <div class="col-sm">
+            <p>But it is more complicated when the numbers do not round to anything known, for example with Social Media
+                sizes used by Facebook, Instagram, or Twitter, an image of 1200x628px need to have an aspect ratio of
+                1.91:1.
+
+            </p>
+            <p>
+                To achieve results, we use a complicated formula that round in special cases to give a
+                human-understandable
+                fraction. For example, when the left unit of the formula results in 8 units and the right unit results
+                in 5
+                units, instead of using the mathematical value of 8:5 is standard to convert it to 16:10.
+            </p>
+        </div>
     </div>
-    <div class="col-sm">
-        <p>But it is more complicated when the numbers do not round to anything known, for example with Social Media
-            sizes used by Facebook, Instagram, or Twitter, an image of 1200x628px need to have an aspect ratio of
-            1.91:1.
-
-        </p>
-        <p>
-            To achieve results, we use a complicated formula that round in special cases to give a
-            human-understandable
-            fraction. For example, when the left unit of the formula results in 8 units and the right unit results
-            in 5
-            units, instead of using the mathematical value of 8:5 is standard to convert it to 16:10.
-        </p>
-    </div>
-</div>
 
 
-{% endblock %}
+    {% endblock %}

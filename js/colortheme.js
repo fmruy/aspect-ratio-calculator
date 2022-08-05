@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             root.style.setProperty('--color-theme-8', 'hsl(0, 0%, 80%)');
             root.style.setProperty('--color-theme-9', 'hsl(0, 0%, 90%)');
             root.style.setProperty('--color-theme-10', 'white');
+            root.style.setProperty('--color-intense-1', '#79afff');
             // Nav Dark
             navbar.classList.remove("navbar-light");
             navbar.classList.add("navbar-dark");
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             root.style.setProperty('--color-theme-8', 'hsl(0, 0%, 20%)');
             root.style.setProperty('--color-theme-9', 'hsl(0, 0%, 10%)');
             root.style.setProperty('--color-theme-10', 'black');
+            root.style.setProperty('--color-intense-1', '#2360c5');
             // Nav Light
             navbar.classList.remove("navbar-dark");
             navbar.classList.add("navbar-light");
