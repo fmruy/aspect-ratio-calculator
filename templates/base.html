@@ -72,7 +72,7 @@
     <!-- Responsive navbar-->
     <nav id="navbar" class="navbar animate navbar-expand-lg shadow-sm sticky-sm-top navbar-light">
         <div class="container-fluid px-3">
-            <a class="navbar-brand nav-link" href="/">Aspect Ratio Calculator</a>
+            <a class="navbar-brand nav-link" href="/">Free Online Tools</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -109,7 +109,12 @@
             <div class="d-flex align-items-center">
                 <h1 class="logo-text"><span style="font-weight: 400;">Aspect Ratio Calculator</span></h1>
             </div>
-            <h2>Calculate the aspect ratio for any value and search for standard aspect ratio.</h2>
+
+            {% if page_mode == 'Custom Size' %}
+            <h2>Calculate the aspect ratio to match any custom width and height combination.</h2>
+            {% else %}
+            <h2>Calculate <span id="mode-options-tag" class="text-intense">{{ mode }}</span> aspect ratio to match any custom width or height.</h2>
+            {% endif %}
         </div>
     </section>
 

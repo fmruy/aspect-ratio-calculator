@@ -24,6 +24,11 @@
                     <input min="1" max="20000" type="number" class="input-value" id="input-height" placeholder="1080">
                     <span class="light-text"><small>px / cm / inch</small></span>
                 </div>
+                {% if page_mode != 'Custom Size' %}
+                <div class="py-1">
+                    <a href="/">Clear preset size</a>
+                </div>
+                {% endif %}
                 <!--
                 <div class="py-1">
                     Calculator Mode:
@@ -109,9 +114,11 @@
             <div class="options-box animate col-sm py-3 px-4">
                 <h4 id="preset-size">Preset sizes</h4>
                 <hr />
+                {% if page_mode != 'Custom Size' %}
                 <ul>
                     <li><a href="/">Custom Size</a></li>
                 </ul>
+                {% endif %}
                 {% if preset_sizes is defined %}
                 <ul>
                     {% for key, value in preset_sizes.items() %}

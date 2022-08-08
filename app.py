@@ -34,23 +34,26 @@ def after_request(response):
 @app.route("/")
 def index():
     mode = "Custom Size"
+    page_mode = "Custom Size"
     title = "Aspect Ratio Calculator"
     placeholder = placeholder_default
-    return render_template('index.html', title=title, mode=mode, preset_sizes=preset_sizes, placeholder=placeholder)
+    return render_template('index.html', title=title, mode=mode, page_mode=page_mode, preset_sizes=preset_sizes, placeholder=placeholder)
 
 # Preset Index Mode
 @app.route("/<url_mode>")
 def preset_mode_page(url_mode):
     if modeIsValid(url_mode):
         mode = modeIndex(url_mode, 0) + ":" + modeIndex(url_mode, 1)
+        page_mode = modeIndex(url_mode, 0) + ":" + modeIndex(url_mode, 1)
         title = mode + " - Aspect Ratio Calculator"
         placeholder = placeholder_data.get(mode, placeholder_default)
     else:
         mode = "Custom Size"
+        page_mode = "Custom Size"
         title = "Aspect Ratio Calculator"
         placeholder = placeholder_default
     
-    return render_template('index.html', title=title, mode=mode, preset_sizes=preset_sizes, placeholder=placeholder)
+    return render_template('index.html', title=title, mode=mode, page_mode=page_mode, preset_sizes=preset_sizes, placeholder=placeholder)
 
 
 # Contact Page
