@@ -68,6 +68,21 @@ def robots_txt():
     return send_from_directory(os.path.join(app.root_path, 'static'),'robots.txt',mimetype='text/plain')
 
 
+# Favicon
+@app.route('/favicon.ico')
+def favicon_ico():
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico',mimetype='image/vnd.microsoft.icon')
+
+@app.route('/favicon.png')
+def favicon_png():
+    return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.png',mimetype='image/png')
+
+@app.route('/apple-touch-icon.png')
+def AppleTouchIcon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                          'apple-touch-icon.png',mimetype='image/png')
+
+
 # Preset Mode
 @app.route("/<url_mode>")
 def preset_mode_page(url_mode):

@@ -1,8 +1,9 @@
 # Aspect Ratio Calculator - 2022
 
+# Import Librarys
 import re
 
-#Support functions
+# Support functions
 def modeIndex(str, i):
     # Split URL
     str_num = re.split(r":|-", str)
