@@ -2,6 +2,7 @@
 
 # Import Librarys
 import re
+from custom_proportions import *
 
 # Support functions
 def modeIndex(str, i):
@@ -24,7 +25,7 @@ def modeIsValid(str):
         return False
     # Check items are Numbers
     if not is_number(n0) or not is_number(n1):
-        print("URL is not valid. Not number.")
+        print("URL is not valid. Arg is not valid number.")
         return False
     return True
 

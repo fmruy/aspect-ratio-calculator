@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Assign in input element
             //inputWidth.value = "";
             //inputWidth.placeholder = rounded(n);
-            inputWidth.value = rounded(n);
+            //inputWidth.value = rounded(n);
         }
         // Calculate remain value Height
         if (remain == "h") {
@@ -170,11 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Assign to global variable
             height = n;
 
-            // Assign in input element
             //inputHeight.value = "";
             //inputHeight.placeholder = rounded(n);
-            inputHeight.value = rounded(n);
         }
+        // Assign in input element
+        inputWidth.value = rounded(width);
+        inputHeight.value = rounded(height);
+
         calcRatio(width, height);
     }
     function calcRatio(numerator, denominator) {
