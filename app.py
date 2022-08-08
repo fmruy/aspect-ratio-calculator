@@ -46,7 +46,6 @@ def index():
 
 
 # Preset Index Mode
-"""
 @app.route("/<url_mode>")
 def preset_mode_page(url_mode):
     if modeIsValid(url_mode):
@@ -59,7 +58,6 @@ def preset_mode_page(url_mode):
         title = "Aspect Ratio Calculator"
         #return redirect(index())
         return render_template('index.html', title=title)
-"""
 
 
 # Contact Page
