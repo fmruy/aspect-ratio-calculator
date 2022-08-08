@@ -2,9 +2,11 @@
 
 # Import Librarys
 import os
-from flask import Flask, request, send_from_directory, session, request, flash, jsonify, redirect, render_template
-from flask_cors import CORS, cross_origin
-from numpy import size
+from flask import Flask, render_template
+#from flask import request, send_from_directory, session, request, flash, jsonify, redirect
+from flask_cors import CORS
+#from flask_cors import cross_origin
+#from numpy import size
 
 #from app_functions import *
 
@@ -31,7 +33,7 @@ def after_request(response):
 
 
 # Index Page
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
     title = "Aspect Ratio Calculator"
     mode = "Custom Size"
@@ -42,7 +44,23 @@ def index():
         "textMode":"Landscape" 
     }
     return render_template('index.html', title=title, mode=mode, placeholder=placeholder)
-    #return render_template('index.html', title=title, mode=mode)
+
+
+# Preset Index Mode
+"""
+@app.route("/<url_mode>")
+def preset_mode_page(url_mode):
+    if modeIsValid(url_mode):
+        print("Custom URL valid")
+        mode = modeIndex(url_mode, 0) + ":" + modeIndex(url_mode, 1)
+        title = mode + " - Aspect Ratio Calculator"
+        return render_template('index.html', title=title, mode=mode)
+    else:
+        print("Custom URL NOT valid")
+        title = "Aspect Ratio Calculator"
+        #return redirect(index())
+        return render_template('index.html', title=title)
+"""
 
 
 # Contact Page
@@ -67,23 +85,6 @@ def sitemap_xml():
 def robots_txt():
     return send_from_directory(os.path.join(app.root_path, 'static'),'robots.txt',mimetype='text/plain')
 
-
-
-# Preset Mode
-"""
-@app.route("/<url_mode>")
-def preset_mode_page(url_mode):
-    if modeIsValid(url_mode):
-        print("Custom URL valid")
-        mode = modeIndex(url_mode, 0) + ":" + modeIndex(url_mode, 1)
-        title = mode + " - Aspect Ratio Calculator"
-        return render_template('index.html', title=title, mode=mode)
-    else:
-        print("Custom URL NOT valid")
-        title = "Aspect Ratio Calculator"
-        #return redirect(index())
-        return render_template('index.html', title=title)
-"""
 
 # Debugger mode
 if __name__ == '__main__':
