@@ -1,10 +1,12 @@
 # Aspect Ratio Calculator - 2022
 
 # Import Librarys
-#import os
 import os
 from flask import Flask, request, send_from_directory, session, request, flash, jsonify, redirect, render_template
 from flask_cors import CORS, cross_origin
+from numpy import size
+
+from app_functions import *
 
 # Configure application
 app = Flask(__name__, static_folder="")
@@ -31,15 +33,16 @@ def after_request(response):
 # Index Page
 @app.route("/", methods=["GET", "POST"])
 def index():
-    if request.method == "POST":
-        # POST method
-        print("Post method called")
-        return redirect("/")
-    else:
-        # GET method
-        title = "Aspect Ratio Calculator"
-        mode = "Custom Size"
-        return render_template('index.html', title=title, mode=mode)
+    title = "Aspect Ratio Calculator"
+    mode = "Custom Size"
+    placeholder = { 
+        "ratio":"16:9", 
+        "size":"1920x1080", 
+        "fraction":"1.78", 
+        "textMode":"Landscape" 
+    }
+    return render_template('index.html', title=title, mode=mode, placeholder=placeholder)
+    #return render_template('index.html', title=title, mode=mode)
 
 
 # Contact Page
@@ -68,16 +71,16 @@ def robots_txt():
 # Preset Mode
 @app.route("/<url_mode>")
 def preset_mode_page(url_mode):
-    if True:
-        # TODO: Check url_mode is a valid preset size
-        #       otherwise go to index() page
-        mode = url_mode
+    if modeIsValid(url_mode):
+        print("Custom URL valid")
+        mode = modeIndex(url_mode, 0) + ":" + modeIndex(url_mode, 1)
         title = mode + " - Aspect Ratio Calculator"
         return render_template('index.html', title=title, mode=mode)
     else:
+        print("Custom URL NOT valid")
         title = "Aspect Ratio Calculator"
+        #return redirect(index())
         return render_template('index.html', title=title)
-
 
 
 # Debugger mode

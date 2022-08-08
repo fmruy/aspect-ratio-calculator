@@ -16,12 +16,12 @@
 
                 <div class="py-1">
                     Ratio Width:
-                    <input min="1" max="20000" type="number" class="input-value" id="input-width" placeholder="100">
+                    <input min="1" max="20000" type="number" class="input-value" id="input-width" placeholder="1920">
                     <small><span class="light-text">px / cm / inch</span></small>
                 </div>
                 <div class="py-1">
                     Ratio Height:
-                    <input min="1" max="20000" type="number" class="input-value" id="input-height" placeholder="100">
+                    <input min="1" max="20000" type="number" class="input-value" id="input-height" placeholder="1080">
                     <span class="light-text"><small>px / cm / inch</small></span>
                 </div>
                 <!--
@@ -60,17 +60,41 @@
                     -->
                     <div class="col">
                         <h6 class="light-text">Aspect Ratio</h6>
-                        <h5 id="aspect-ratio-tag" class="text-intense mh40">0:0</h5>
+                        <h5 id="aspect-ratio-tag" class="text-intense mh40">
+                            {% if placeholder is defined %}
+                            {{ placeholder['ratio'] }}
+                            {% else %}
+                            16:9
+                            {% endif %}
+                        </h5>
 
                         <h6 class="light-text">Your image size</h6>
-                        <h5 id="image-size-tag" class="mh40">0000x0000</h5>
+                        <h5 id="image-size-tag" class="mh40">
+                            {% if placeholder is defined %}
+                            {{ placeholder['size'] }}
+                            {% else %}
+                            1920x1080
+                            {% endif %}
+                        </h5>
                     </div>
                     <div class="col">
                         <h6 class="light-text">Fraction</h6>
-                        <h6 id="fraction-tag" class="mh40">0.000</h6>
+                        <h6 id="fraction-tag" class="mh40">
+                            {% if placeholder is defined %}
+                            {{ placeholder['fraction'] }}
+                            {% else %}
+                            1.78
+                            {% endif %}
+                        </h6>
 
                         <h6 class="light-text">Mode</h6>
-                        <h6 id="mode-result-tag" class="mh40">-</h6>
+                        <h6 id="mode-result-tag" class="mh40">
+                            {% if placeholder is defined %}
+                            {{ placeholder['textMode'] }}
+                            {% else %}
+                            Landscape
+                            {% endif %}
+                        </h6>
                     </div>
                 </div>
 
