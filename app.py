@@ -6,7 +6,7 @@ from flask import Flask, request, send_from_directory, session, request, flash, 
 from flask_cors import CORS, cross_origin
 from numpy import size
 
-from app_functions import *
+#from app_functions import *
 
 # Configure application
 app = Flask(__name__, static_folder="")
