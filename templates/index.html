@@ -102,8 +102,6 @@
         </div>
     </div>
 
-
-
     <div class="w-100"></div>
 
     <div class="col-sm p-0 mb-3">
@@ -114,38 +112,40 @@
                 <ul>
                     <li><a href="/">Custom Size</a></li>
                 </ul>
+                {% if preset_sizes is defined %}
                 <ul>
-                    <li><a href="16:9">16:9</a></li>
-                    <li><a href="4:3">4:3</a></li>
-                    <li><a href="2:3">2:3</a></li>
-                    <li><a href="3:2">3:2</a></li>
-                    <li><a href="1:2">1:2</a></li>
+                    {% for key, value in preset_sizes.items() %}
+                    <li><a href="{{ key }}">
+                        {{ key }} 
+                        {% if value is not none %}
+                        - ({{ value }})
+                        {% endif %}
+                    </a></li>
+                    {% endfor %}
                 </ul>
-                <ul>
-                    <li><a href="4:3">SVGA / XGA (4:3)</a></li>
-                    <li><a href="5:4">SXGA (5:4)</a></li>
-                    <li><a href="5:3">WXGA (5:3)</a></li>
-                    <li><a href="16:10">WXGA+ / WSXGA+ (16:10)</a></li>
-                    <li><a href="16:9">4K / HD / FHD (16:9)</a></li>
-                </ul>
+                {% else %}
+                <ul><li>No sizes</li></ul>
+                {% endif %}
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
     <!-- Page Content Block 2 -->
+
+    {% if placeholder['customDescription'] is defined %}
     <div class="spacer"></div>
     <div class="row gx-lg-5">
-        <h2 class="my-4">How to use an Aspect Ratio Calculator</h2>
+        <h2 class="my-4">Why use {{ placeholder['ratio'] }} aspect ratio</h2>
+        <p>
+            {{ placeholder['customDescription'] }}
+        </p>    
+    </div>
+    {% endif %}
+
+
+    <div class="spacer"></div>
+    <div class="row gx-lg-5">
+        <h2 class="my-4">How to use?</h2>
         <p>How to calculate a <a href="/">Custom Size</a>:</p>
         <div class="container">
             <ol>
@@ -162,7 +162,7 @@
     <div class="spacer"></div>
 
     <div class="row mb-5">
-        <h2 class="pb-4">About Aspect Ratio</h2>
+        <h2 class="pb-4">About Aspect Ratio Calculator</h2>
         <div class="col-sm">
             <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed
                 as two numbers separated by a colon <code>x:y</code>.

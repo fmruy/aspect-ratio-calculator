@@ -6,12 +6,27 @@ DEBUG_PRINT = False
 
 # Set the list with the basic data
 placeholder_data = { 
-    "16:9" : { "width":"1920", "height":"1080" },
-    "4:3"  : { "width":"1920", "height":"1440" },
-    "3:2"  : { "width":"2880", "height":"1920" },
-    "2:3"  : { "width":"1920", "height":"2880" },
-    "1:1"  : { "width":"1920", "height":"1920" },
+    "16:9"  : { "width":"1920", "height":"1080", "name":"SVGA / XGA / 4K / HD / FHD" },
+    "16:10" : { "width":"1920", "height":"1080", "name":"WXGA+ / WSXGA+" },
+    "5:4"   : { "width":"1920", "height":"1000", "name":"SXGA" },
+    "5:3"   : { "width":"1920", "height":"1000", "name":"WXGA" },
+    "4:3"   : { "width":"1920", "height":"1440", "name":None },
+    "3:2"   : { "width":"1920", "height":"1280", "name":None },
+    "2:3"   : { "width":"1920", "height":"2880", "name":None },
+    "1:2"   : { "width":"1920", "height":"3840", "name":None },
+    "1:1"   : { "width":"1920", "height":"1920", "name":None },
 }
+
+# Text custom data
+descriptions = {
+    "16:9" : {"customDescription":"This is my custom text for 16:9 data."},
+    "4:3" : {"customDescription":"This is my custom text for 4:3 data."},
+}
+
+# Add preset sizes
+preset_sizes = {}
+for key, data in placeholder_data.items():
+    preset_sizes[key] = placeholder_data[key]['name']
 
 # Auto calculate and populate remaining fields of data
 for key, data in placeholder_data.items():
@@ -33,9 +48,17 @@ for key, data in placeholder_data.items():
     
     placeholder_data[key].update(add_dict)
 
+
+# Add descriptions
+for key, data in placeholder_data.items():
+    for sub_key, sub_data in descriptions.items():
+        placeholder_data[sub_key].update(descriptions[sub_key])
+        
+
 # Print for debugging
 if DEBUG_PRINT: 
     for element in placeholder_data.items(): print(element)
 
-# Set the default placeholder
+
+# Defaults
 placeholder_default = placeholder_data.get("16:9")

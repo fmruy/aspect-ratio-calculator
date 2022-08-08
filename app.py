@@ -36,7 +36,7 @@ def index():
     mode = "Custom Size"
     title = "Aspect Ratio Calculator"
     placeholder = placeholder_default
-    return render_template('index.html', title=title, mode=mode, placeholder=placeholder)
+    return render_template('index.html', title=title, mode=mode, preset_sizes=preset_sizes, placeholder=placeholder)
 
 # Preset Index Mode
 @app.route("/<url_mode>")
@@ -50,7 +50,7 @@ def preset_mode_page(url_mode):
         title = "Aspect Ratio Calculator"
         placeholder = placeholder_default
     
-    return render_template('index.html', title=title, mode=mode, placeholder=placeholder)
+    return render_template('index.html', title=title, mode=mode, preset_sizes=preset_sizes, placeholder=placeholder)
 
 
 # Contact Page
