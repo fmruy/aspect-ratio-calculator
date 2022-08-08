@@ -73,9 +73,11 @@ def robots_txt():
 def favicon_ico():
     return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
+
 @app.route('/favicon.png')
 def favicon_png():
     return send_from_directory(os.path.join(app.root_path, 'static'),'favicon.png',mimetype='image/png')
+
 
 @app.route('/apple-touch-icon.png')
 def AppleTouchIcon():
@@ -84,6 +86,7 @@ def AppleTouchIcon():
 
 
 # Preset Mode
+"""
 @app.route("/<url_mode>")
 def preset_mode_page(url_mode):
     if modeIsValid(url_mode):
@@ -96,7 +99,7 @@ def preset_mode_page(url_mode):
         title = "Aspect Ratio Calculator"
         #return redirect(index())
         return render_template('index.html', title=title)
-
+"""
 
 # Debugger mode
 if __name__ == '__main__':
