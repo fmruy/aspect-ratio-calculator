@@ -7,8 +7,7 @@ from flask import Flask, render_template
 from flask_cors import CORS
 #from flask_cors import cross_origin
 #from numpy import size
-
-#from app_functions import *
+from custom_functions import *
 
 # Configure application
 app = Flask(__name__, static_folder="")
