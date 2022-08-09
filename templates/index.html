@@ -13,7 +13,6 @@
                 <h3><span id="mode-options-tag" class="text-intense">{{ mode }}</span> Ratio Calculator</h3>
                 <hr />
                 <small><span class="light-text">Insert a custom width or height.</span></small>
-
                 <div class="py-1">
                     Ratio Width:
                     <input min="1" max="20000" type="number" class="input-value" id="input-width" placeholder="1920">
@@ -29,17 +28,6 @@
                     <a href="/">Clear preset size</a>
                 </div>
                 {% endif %}
-                <!--
-                <div class="py-1">
-                    Calculator Mode:
-                    <select class="input-select" id="input-select">
-                        <option value="0" selected>Custom Size</option>
-                        <option value="1">16:9</option>
-                        <option value="2">4:3</option>
-                        <option value="3">3:2</option>
-                    </select>
-                </div>
-                -->
                 <!-- Message box -->
                 <div id="live-alert-placeholder"></div>
                 <div id="error-tag" class="text-intense"></div>
@@ -123,15 +111,17 @@
                 <ul>
                     {% for key, value in preset_sizes.items() %}
                     <li><a href="{{ key }}">
-                        {{ key }} 
-                        {% if value is not none %}
-                        - ({{ value }})
-                        {% endif %}
-                    </a></li>
+                            {{ key }}
+                            {% if value is not none %}
+                            - ({{ value }})
+                            {% endif %}
+                        </a></li>
                     {% endfor %}
                 </ul>
                 {% else %}
-                <ul><li>No sizes</li></ul>
+                <ul>
+                    <li>No sizes</li>
+                </ul>
                 {% endif %}
             </div>
         </div>
@@ -141,34 +131,41 @@
 
     {% if placeholder['customDescription'] is defined %}
     <div class="spacer"></div>
-    <div class="row gx-lg-5">
-        <h2 class="my-4">Why use {{ placeholder['ratio'] }} aspect ratio</h2>
-        <p>
-            {{ placeholder['customDescription'] }}
-        </p>    
-    </div>
-    {% endif %}
 
+    <div class="row gx-lg-5">
+        <div class="col-sm">
+            <h2 class="my-4">Why use {{ placeholder['ratio'] }} aspect ratio</h2>
+            <p>
+                {{ placeholder['customDescription'] }}
+            </p>
+        </div>
+    </div>
+
+    {% endif %}
 
     <div class="spacer"></div>
     <div class="row gx-lg-5">
         <h2 class="my-4">How to use?</h2>
-        <p>How to calculate a <a href="/">Custom Size</a>:</p>
-        <div class="container">
+        <div class="col-sm">
+            <p>How to calculate a <a href="/">Custom Size</a>:</p>
             <ol>
                 <li class="">Insert the first value (width or height).</li>
                 <li class="">Select a preset, or insert the other value.</li>
             </ol>
+             
+        </div>
+        <div class="col-sm">
             <p>How to use a <a href="/#preset-size">Preset Size</a>:</p>
             <ol class="">
                 <li>Select a preset from the list, for example <a href="16:9">16:9</a> or <a href="4:3">4:3</a>.</li>
                 <li>Insert one of the values: width or height.</li>
             </ol>
         </div>
+
     </div>
     <div class="spacer"></div>
 
-    <div class="row mb-5">
+    <div class="row gx-lg-5 mt-3 mb-5">
         <h2 class="pb-4">About Aspect Ratio Calculator</h2>
         <div class="col-sm">
             <p>The aspect ratio of an image defines the proportion between its width and height. It is always expressed

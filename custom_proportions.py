@@ -19,8 +19,8 @@ placeholder_data = {
 
 # Text custom data
 descriptions = {
-    "16:9" : {"customDescription":"This is my custom text for 16:9 data."},
-    "4:3" : {"customDescription":"This is my custom text for 4:3 data."},
+    "16:9" : {"customDescription":"A 16:9 ratio (also pronounced “16 9”, “16 to 9”, or “16 by 9” and sometimes written as “16x9”) is an aspect ratio, where for every 16 units of width, there are 9 corresponding units of height. Examples of 16:9 ratios are 16 inches wide by 9 inches high, 32 widgets wide by 18 widgets high, and 1920 pixels wide by 1080 pixels high. An image has a 16:9 ratio if its width-to-height ratio is equal to 16/9, or 1.78. A 16:9 ratio can also be represented as 1.78:1. 16:9 is significant because it is today’s standard ratio for film and display. The 16:9 ratio replaced the old 4:3 ratio in the early 2,000s. You may have heard terms such as 1080p HD, 720p HD, and 4K UHD. These terms all refer to 16×9 ratios. For example, a 1080p HD display refers to a screen resolution of 1920x1080p (1920/1080 = 1.78)."},
+    "4:3" : {"customDescription":"A 4:3 ratio (also pronounced “4 3”, “4 to 3”, or “4 by 3”, and sometimes written as “4x3”) is an aspect ratio, where for every 4 units of width, there are 3 corresponding units of height."},
 }
 
 # Add preset sizes
