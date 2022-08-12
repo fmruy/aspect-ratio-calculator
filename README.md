@@ -17,10 +17,10 @@ FMR
 
 ## Version History
 
-* 0.1
-    * Initial Release
 * 1.0
     * Website development
+* 0.1
+    * Initial Release
 
 
 ## License
